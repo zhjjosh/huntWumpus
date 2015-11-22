@@ -9,12 +9,17 @@ import com.mvc.huntwumpus.GameImage;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 
 /**
@@ -27,12 +32,31 @@ public class RuleView extends JFrame {
     private JScrollPane ruleScrollPane;
     private JList ruleList;
     private JButton continueButton;
-
+    private JMenuBar menubar;
+    private JMenu menu;
+    private JMenuItem exitMenuItem;
+    
     @SuppressWarnings("unchecked")
     public RuleView() {
 
+        menubar = new JMenuBar();
+        menu = new JMenu("File");
+        menu.setMnemonic(KeyEvent.VK_F);
+
+        exitMenuItem = new JMenuItem("Exit");
+
+        exitMenuItem.setMnemonic(KeyEvent.VK_E);
+        exitMenuItem.setToolTipText("Exit the game");
+
+        menu.add(exitMenuItem);
+        menubar.add(menu);
+        setJMenuBar(menubar);
+        
+        
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(750, 500));
+        setTitle("Hunt The Wumpus");
+        setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - 750) / 2, (Toolkit.getDefaultToolkit().getScreenSize().height - 500) / 2);
         getContentPane().setLayout(null);
         setContentPane(new JLabel(new ImageIcon(getClass().getResource(GameImage.BACKGROUND_IMAGE))));
 
@@ -126,5 +150,47 @@ public class RuleView extends JFrame {
      */
     public void setContinueButton(JButton continueButton) {
         this.continueButton = continueButton;
+    }
+
+    /**
+     * @return the menubar
+     */
+    public JMenuBar getMenubar() {
+        return menubar;
+    }
+
+    /**
+     * @param menubar the menubar to set
+     */
+    public void setMenubar(JMenuBar menubar) {
+        this.menubar = menubar;
+    }
+
+    /**
+     * @return the menu
+     */
+    public JMenu getMenu() {
+        return menu;
+    }
+
+    /**
+     * @param menu the menu to set
+     */
+    public void setMenu(JMenu menu) {
+        this.menu = menu;
+    }
+
+    /**
+     * @return the exitMenuItem
+     */
+    public JMenuItem getExitMenuItem() {
+        return exitMenuItem;
+    }
+
+    /**
+     * @param exitMenuItem the exitMenuItem to set
+     */
+    public void setExitMenuItem(JMenuItem exitMenuItem) {
+        this.exitMenuItem = exitMenuItem;
     }
 }

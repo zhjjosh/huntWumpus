@@ -23,15 +23,14 @@ import javax.swing.JMenuItem;
  *
  * @author Zhjjosh
  */
-public class StartView extends JFrame {
-
-    private JLabel titleLabel;
-    private JButton startButton, exitButton;
+public class PauseView extends JFrame{
+    private JLabel titleLabel1, titleLabel2;
+    private JButton resumeButton;
     private JMenuBar menubar;
     private JMenu menu;
     private JMenuItem exitMenuItem;
 
-    public StartView() {
+    public PauseView() {
 
         menubar = new JMenuBar();
         menu = new JMenu("File");
@@ -53,69 +52,69 @@ public class StartView extends JFrame {
         getContentPane().setLayout(null);
         setContentPane(new JLabel(new ImageIcon(getClass().getResource(GameImage.BACKGROUND_IMAGE))));
 
-        titleLabel = new JLabel();
-        titleLabel.setFont(new Font("Arial", 1, 36));
-        titleLabel.setForeground(Color.WHITE);
-        titleLabel.setText("Hunt the Wumpus");
-        getContentPane().add(titleLabel);
-        titleLabel.setBounds(200, 20, 350, 150);
+        titleLabel1 = new JLabel();
+        titleLabel1.setFont(new Font("Arial", 1, 18));
+        titleLabel1.setForeground(Color.WHITE);
+        titleLabel1.setText("Your game has been pasue.");
+        getContentPane().add(titleLabel1);
+        titleLabel1.setBounds(200, 20, 350, 150);
+        
+        titleLabel2 = new JLabel();
+        titleLabel2.setFont(new Font("Arial", 1, 18));
+        titleLabel2.setForeground(Color.WHITE);
+        titleLabel2.setText("Please click resume to resume the game.");
+        getContentPane().add(titleLabel2);
+        titleLabel2.setBounds(200, 40, 400, 150);
 
-        startButton = new JButton();
-        startButton.setFont(new Font("Arial", 0, 36)); // NOI18N
-        startButton.setText("START GAME");
-        getContentPane().add(startButton);
-        startButton.setBounds(200, 200, 350, 75);
-
-        exitButton = new JButton();
-        exitButton.setFont(new Font("Arial", 0, 36)); // NOI18N
-        exitButton.setText("Exit");
-        getContentPane().add(exitButton);
-        exitButton.setBounds(200, 300, 350, 75);
+        resumeButton = new JButton();
+        resumeButton.setFont(new Font("Arial", 0, 36)); // NOI18N
+        resumeButton.setText("Resume");
+        getContentPane().add(resumeButton);
+        resumeButton.setBounds(200, 200, 350, 75);
 
         pack();
-        setVisible(true);
     }
 
     /**
-     * @return the titleLabel
+     * @return the titleLabel1
      */
-    public JLabel getTitleLabel() {
-        return titleLabel;
+    public JLabel getTitleLabel1() {
+        return titleLabel1;
     }
 
     /**
-     * @param titleLabel the titleLabel to set
+     * @param titleLabel1 the titleLabel1 to set
      */
-    public void setTitleLabel(JLabel titleLabel) {
-        this.titleLabel = titleLabel;
+    public void setTitleLabel1(JLabel titleLabel1) {
+        this.titleLabel1 = titleLabel1;
     }
 
     /**
-     * @return the startButton
+     * @return the titleLabel2
      */
-    public JButton getStartButton() {
-        return startButton;
+    public JLabel getTitleLabel2() {
+        return titleLabel2;
     }
 
     /**
-     * @param startButton the startButton to set
+     * @param titleLabel2 the titleLabel2 to set
      */
-    public void setStartButton(JButton startButton) {
-        this.startButton = startButton;
+    public void setTitleLabel2(JLabel titleLabel2) {
+        this.titleLabel2 = titleLabel2;
     }
 
     /**
-     * @return the exitButton
+     * @return the resumeButton
      */
-    public JButton getExitButton() {
-        return exitButton;
+    public JButton getResumeButton() {
+        return resumeButton;
     }
 
     /**
-     * @param exitButton the exitButton to set
+     * @param resumeButton the resumeButton to set
      */
-    public void setExitButton(JButton exitButton) {
-        this.exitButton = exitButton;
+    public void setResumeButton(JButton resumeButton) {
+        this.resumeButton = resumeButton;
     }
 
     /**
