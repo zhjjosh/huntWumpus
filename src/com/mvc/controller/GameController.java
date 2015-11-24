@@ -107,8 +107,8 @@ public class GameController implements ActionListener {
                 break;
             case "5":
                 this.gameView.setVisible(false);
-                this.monsterView.getInfoTextArea().setText(this.world.getAngryMonsterText(s));
-                this.monsterView.updateCreatureImg(GameImage.CLOSE, GameImage.ANGRY);
+                this.monsterView.getInfoTextArea().setText(this.world.getWumpusText(s));
+                this.monsterView.updateCreatureImg(GameImage.WUMPUS, GameImage.KILLED);
                 this.monsterView.getExitButton().setVisible(true);
                 this.monsterView.setVisible(true);
                 break;
