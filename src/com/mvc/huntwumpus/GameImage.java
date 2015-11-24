@@ -18,7 +18,7 @@ public class GameImage {
     public final static String CLOSE = "/com/mvc/view/close.jpg";
     public final static String HAPPY = "/com/mvc/view/happy.png";
     public final static String OPEN = "/com/mvc/view/open.jpg";
-    public final static String SLEEP = "/com/mvc/view/sleep.jpg";
+    public final static String SLEEP = "/com/mvc/view/sleeping.jpg";
     public final static String KILLED_WUPMUS = "/com/mvc/view/killedWumpus.gif";
     public final static String WUMPUS = "/com/mvc/view/wumpus.gif";
     public final static String VICTORY = "/com/mvc/view/victory.gif";

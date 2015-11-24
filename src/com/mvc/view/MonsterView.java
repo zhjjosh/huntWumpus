@@ -64,7 +64,7 @@ public class MonsterView extends JFrame {
         infoTextArea.setFont(new Font("Arial", 1, 18));
         infoTextArea.setText("You are in room 1. \nThere no creature in the room.");
         getContentPane().add(infoTextArea);
-        infoTextArea.setBounds(100, 20, 550, 60);
+        infoTextArea.setBounds(100, 20, 550, 75);
         infoTextArea.setEditable(false);
 
         img1Label = new JLabel();

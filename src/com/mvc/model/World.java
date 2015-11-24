@@ -48,11 +48,11 @@ public class World extends Graph {
     }
     
     public String getSleepMonsterText(String s) {
-        return "There is a Monster in room " + s + ", but it is sleeping now.\nYou have opened the tresure box, which send you to a room which is just beside Wumpus";
+        return "There is a Monster in room " + s + ", but it is sleeping now.\nYou have opened the tresure box,\nwhich send you to a room which is just beside Wumpus";
     }
     
     public String getHappyMonsterText(String s) {
-        return "There is a Monster in room " + s + ". It is very happy now.\nYou can go through the room, but you cannot open the tresure box";
+        return "There is a Monster in room " + s + ". It is very happy now.\nYou can go through the room, \nbut you cannot open the tresure box";
     }
     
     public String getAngryMonsterText(String s) {
@@ -60,7 +60,7 @@ public class World extends Graph {
     }
     
     public String getWumpusText(String s) {
-        return "Wumpus is in this room " + s + ", You are killed..\nPlease click continue to try again or click exit to leave the game";
+        return "Wumpus is in this room " + s + ", You are killed..\nPlease click continue to try again \nor click exit to leave the game";
     }
     public String getVictoryText(String s) {
         return "Wumpus has been killed. You have won the game.\nPlease click continue to try again \nor click exit to leave the game";
