@@ -56,14 +56,14 @@ public class World extends Graph {
     }
     
     public String getAngryMonsterText(String s) {
-        return "There is a Monster in  room " + s + ". It is very angry now.\nYou cannot open the treasure box and the monter will send you to another room randomly";
+        return "There is a Monster in  room " + s + ". It is very angry now.\nYou cannot open the treasure box.\nthe monter will send you to another room randomly";
     }
     
     public String getWumpusText(String s) {
-        return "Wumpus is in this room, You are killed " + s + ".\nPlease click continue to try again or click exit to leave the game";
+        return "Wumpus is in this room " + s + ", You are killed..\nPlease click continue to try again or click exit to leave the game";
     }
     public String getVictoryText(String s) {
-        return "Wumpus has been killed. You have won the game " + s + ".\nPlease click continue to try again or click exit to leave the game";
+        return "Wumpus has been killed. You have won the game.\nPlease click continue to try again \nor click exit to leave the game";
     }
     
     public Room getRoom( String r) {
