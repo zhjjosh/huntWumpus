@@ -44,7 +44,26 @@ public class World extends Graph {
     }
     
     public String getFlyingBirdText(String s) {
-        return "There is a flying bird in this room " + s + ".\nThe wumpus is "+ distance( location, wumpus )+" rooms away";
+        return "There is a flying bird in this room " + s + ".\nYou are told that the wumpus is "+ distance( location, wumpus )+" rooms away";
+    }
+    
+    public String getSleepMonsterText(String s) {
+        return "There is a Monster in room " + s + ", but it is sleeping now.\nYou have opened the tresure box, which send you to a room which is just beside Wumpus";
+    }
+    
+    public String getHappyMonsterText(String s) {
+        return "There is a Monster in room " + s + ". It is very happy now.\nYou can go through the room, but you cannot open the tresure box";
+    }
+    
+    public String getAngryMonsterText(String s) {
+        return "There is a Monster in  room " + s + ". It is very angry now.\nYou cannot open the treasure box and the monter will send you to another room randomly";
+    }
+    
+    public String getWumpusText(String s) {
+        return "Wumpus is in this room, You are killed " + s + ".\nPlease click continue to try again or click exit to leave the game";
+    }
+    public String getVictoryText(String s) {
+        return "Wumpus has been killed. You have won the game " + s + ".\nPlease click continue to try again or click exit to leave the game";
     }
     
     public Room getRoom( String r) {

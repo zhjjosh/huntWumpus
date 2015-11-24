@@ -80,20 +80,37 @@ public class GameController implements ActionListener {
             case "1":
                 this.gameView.setVisible(false);
                 this.monsterView.getInfoTextArea().setText(this.world.getFlyingBirdText(s));
-                this.monsterView.updateCreatureImg(GameImage.FLYING_BIRD, GameImage.ANGRY);
+                this.monsterView.updateCreatureImg(GameImage.FLYING_BIRD, GameImage.BOOK);
+                this.monsterView.getExitButton().setVisible(false);
                 this.monsterView.setVisible(true);
                 break;
             case "2":
-                
+                this.gameView.setVisible(false);
+                this.monsterView.getInfoTextArea().setText(this.world.getSleepMonsterText(s));
+                this.monsterView.updateCreatureImg(GameImage.OPEN, GameImage.SLEEP);
+                this.monsterView.getExitButton().setVisible(false);
+                this.monsterView.setVisible(true);
                 break;
             case "3":
-               
+                this.gameView.setVisible(false);
+                this.monsterView.getInfoTextArea().setText(this.world.getHappyMonsterText(s));
+                this.monsterView.updateCreatureImg(GameImage.CLOSE, GameImage.HAPPY);
+                this.monsterView.getExitButton().setVisible(false);
+                this.monsterView.setVisible(true);
                 break;
             case "4":
-                
+                this.gameView.setVisible(false);
+                this.monsterView.getInfoTextArea().setText(this.world.getAngryMonsterText(s));
+                this.monsterView.updateCreatureImg(GameImage.CLOSE, GameImage.ANGRY);
+                this.monsterView.getExitButton().setVisible(false);
+                this.monsterView.setVisible(true);
                 break;
             case "5":
-                
+                this.gameView.setVisible(false);
+                this.monsterView.getInfoTextArea().setText(this.world.getAngryMonsterText(s));
+                this.monsterView.updateCreatureImg(GameImage.CLOSE, GameImage.ANGRY);
+                this.monsterView.getExitButton().setVisible(true);
+                this.monsterView.setVisible(true);
                 break;
             default:
                 this.gameView.getRoom1Button().setText("Room " + this.world.getRooms()[0]);
