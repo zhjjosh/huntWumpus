@@ -32,6 +32,7 @@ public class GameController implements ActionListener {
     private GameModel gameModel;
     private Layout layout;
     private World world;
+    private String pauseViewStatus;
 
     /**
      * @param args the command line arguments
@@ -51,6 +52,7 @@ public class GameController implements ActionListener {
         this.ruleView = new RuleView();
         this.gameView = new GameView();
         this.monsterView = new MonsterView();
+        this.pauseViewStatus = "0";
         layout = new Layout();
         world = new World(layout);
         updateGameView(this.world.getLocation().getLabel());
@@ -67,6 +69,10 @@ public class GameController implements ActionListener {
         this.gameView.getExitMenuItem().addActionListener(this);
         this.pauseView.getResumeButton().addActionListener(this);
         this.pauseView.getExitMenuItem().addActionListener(this);
+        this.monsterView.getPauseMenuItem().addActionListener(this);
+        this.monsterView.getExitMenuItem().addActionListener(this);
+        this.monsterView.getContinueButton().addActionListener(this);
+        this.monsterView.getExitMenuItem().addActionListener(this);
     }
 
     public GameController() {
@@ -75,7 +81,7 @@ public class GameController implements ActionListener {
 
     public void updateGameView(String s) {
         this.world.enterRoom(s);
-        String status = this.world.MonsterCheck();
+        String status = this.world.MonsterCheck(true);
         switch (status) {
             case "1":
                 this.gameView.setVisible(false);
@@ -132,7 +138,8 @@ public class GameController implements ActionListener {
                 || e.getSource() == this.startView.getExitMenuItem()
                 || e.getSource() == this.ruleView.getExitMenuItem()
                 || e.getSource() == this.gameView.getExitMenuItem()
-                || e.getSource() == this.pauseView.getExitMenuItem()) {
+                || e.getSource() == this.pauseView.getExitMenuItem()
+                || e.getSource() == this.monsterView.getExitMenuItem()) {
             System.exit(0);
         } else if (e.getSource() == this.ruleView.getContinueButton()) {
             ruleView.setVisible(false);
@@ -146,9 +153,57 @@ public class GameController implements ActionListener {
         } else if (e.getSource() == this.gameView.getPauseMenuItem()) {
             pauseView.setVisible(true);
             gameView.setVisible(false);
+            this.pauseViewStatus = "0";
+        } else if (e.getSource() == this.monsterView.getPauseMenuItem()) {
+            pauseView.setVisible(true);
+            monsterView.setVisible(false);
+            this.pauseViewStatus = "1";
         } else if (e.getSource() == this.pauseView.getResumeButton()) {
             pauseView.setVisible(false);
-            gameView.setVisible(true);
+            if ("0".equals(pauseViewStatus)) {
+                gameView.setVisible(true);
+            } else {
+                monsterView.setVisible(true);
+            }
+        }else if (e.getSource() == this.monsterView.getContinueButton()) {
+            String status = this.world.MonsterCheck(false);
+            switch (status) {
+            case "1":
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.updateGameView(this.world.getLocation().getLabel());
+                this.gameView.setVisible(true);
+                break;
+            case "2":
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.updateGameView(this.world.getWumpusRoom());
+                this.gameView.setVisible(true);
+                break;
+            case "3":
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.gameView.setVisible(true);
+                break;
+            case "4":
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.updateGameView(this.world.getWumpusRoom());
+                this.gameView.setVisible(true);
+                break;
+            case "5":
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.updateGameView(this.world.getRandomRoom());
+                this.gameView.setVisible(true);
+                break;
+            default:
+                this.monsterView.setVisible(false);
+                this.world.setFlyingBird();
+                this.updateGameView(this.world.getWumpusRoom());
+                this.gameView.setVisible(true);
+                break;
+        }
         }
     }
 

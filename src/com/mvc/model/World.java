@@ -16,15 +16,17 @@ public class World extends Graph {
     public World( Layout ly ) {
         super( ly.getRooms() );
         this.layout = ly; 
-        wumpus = ly.getWumpusLocation();
-        location = ly.getPlayerLocation();
-        flyingBird = ly.getFlyingBirdLocation();
-        monster = ly.getMonsterLocation();
+        wumpus = layout.getWumpusLocation();       
+        monster = layout.getMonsterLocation();
+        flyingBird = layout.getFlyingBirdLocation();
+        location = layout.getPlayerLocation();
         monsterStatus = 0;
     }
     
-    public String MonsterCheck() {
-        monsterStatus++;
+    public String MonsterCheck(boolean check) {
+        if (check){
+            monsterStatus++;
+        }
         if (location.equals(flyingBird)){
             return "1";
         }else if (location.equals(monster)){
@@ -52,18 +54,23 @@ public class World extends Graph {
     }
     
     public String getHappyMonsterText(String s) {
-        return "There is a Monster in room " + s + ". It is very happy now.\nYou can go through the room, \nbut you cannot open the tresure box";
+        return "There is a Monster in room " + s + ". It is very happy now.\nYou can go backto the previous room, \nbut you cannot open the tresure box";
     }
     
     public String getAngryMonsterText(String s) {
-        return "There is a Monster in  room " + s + ". It is very angry now.\nYou cannot open the treasure box.\nthe monter will send you to another room randomly";
+        return "There is a Monster in  room " + s + ". It is very angry now.\nYou cannot open the treasure box.\nThe monter will send you to another room randomly";
     }
     
     public String getWumpusText(String s) {
         return "Wumpus is in this room " + s + ", You are killed..\nPlease click continue to try again \nor click exit to leave the game";
     }
+    
     public String getVictoryText(String s) {
         return "Wumpus has been killed. You have won the game.\nPlease click continue to try again \nor click exit to leave the game";
+    }
+    
+    public void setFlyingBird(){
+        flyingBird = layout.getFlyingBirdLocation();
     }
     
     public Room getRoom( String r) {
@@ -80,6 +87,7 @@ public class World extends Graph {
 	}
 	return false;
     }
+    
     
     public void enterRoom(String s) { 
         setLocation(this.getLayout().getPlayerCurrentLocation(s));
@@ -100,6 +108,15 @@ public class World extends Graph {
             i++;
         }
         return rooms;
+    }
+     
+     public String getWumpusRoom() {
+	ArrayList <Edge>  ale = getWumpus().edges;
+        return ale.get(0).to;
+    }
+     
+     public String getRandomRoom() {
+        return layout.generateRandom();
     }
 
     public boolean shoot( Room r ) {

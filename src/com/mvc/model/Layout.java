@@ -2,6 +2,7 @@ package com.mvc.model;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Random;
 
 public class Layout {
     
@@ -9,6 +10,7 @@ public class Layout {
     // Nodes (rooms) are labelled 1 to 20. Each node has 3 edges. 
     // As in the original game, the layout is isomorphic to the vertices
     // of dodecahedron.
+    private String wumpusLabel, playerLabel, monsterlabel,flyingBirdLabel;
 
     static String[] nodes = {
 
@@ -104,7 +106,10 @@ public class Layout {
 
     public Layout() {       
         // Create and populate the rooms table
-        
+        wumpusLabel = "0";
+        playerLabel = "0";
+        monsterlabel = "0";
+        flyingBirdLabel = "0";
         rooms = new Hashtable ();
         // Process the nodes array
 	for ( String n : nodes ) {
@@ -126,22 +131,45 @@ public class Layout {
     }
         
     public Room getPlayerLocation() {
-	return (Room) rooms.get( "1" );
+        
+        while (playerLabel.equals(wumpusLabel) || playerLabel.equals(flyingBirdLabel) || playerLabel.equals(monsterlabel)){
+            playerLabel = generateRandom();
+        }
+	return (Room) rooms.get( playerLabel);
     }
     
     public Room getWumpusLocation() {
-	return  (Room) rooms.get( "20" );
+        wumpusLabel = generateRandom();
+	return  (Room) rooms.get( wumpusLabel );
     }
     
     public Room getFlyingBirdLocation() {
-	return  (Room) rooms.get( "11" );
+        String flyingBirdLabel2 = generateRandom();
+        while (flyingBirdLabel2.equals(wumpusLabel) || flyingBirdLabel2.equals(monsterlabel) || flyingBirdLabel2.equals(flyingBirdLabel)){
+            flyingBirdLabel2 = generateRandom();
+        }
+        flyingBirdLabel = flyingBirdLabel2;
+	return (Room) rooms.get( flyingBirdLabel);
     }
     
     public Room getMonsterLocation() {
-	return  (Room) rooms.get( "15" );
+	while (monsterlabel.equals(wumpusLabel)){
+            monsterlabel = generateRandom();
+        }
+	return (Room) rooms.get( monsterlabel);
     }
     
     public Room getPlayerCurrentLocation(String s) {
+        playerLabel = s;
 	return  (Room) rooms.get(s);
     }
+    
+    public String generateRandom(){
+         Random randomGenerator = new Random();
+         int randomInt = randomGenerator.nextInt(20);
+         randomInt++; 
+         return randomInt+"";
+    }
+ 
+      
 }
