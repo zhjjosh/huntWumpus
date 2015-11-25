@@ -125,7 +125,7 @@ public class GameController implements ActionListener {
                 this.gameView.getInfoTextArea().setText(this.world.describe());
                 break;
         }
-
+        this.world.setFlyingBird();
     }
 
     @Override
@@ -170,36 +170,32 @@ public class GameController implements ActionListener {
             switch (status) {
             case "1":
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
                 this.updateGameView(this.world.getLocation().getLabel());
                 this.gameView.setVisible(true);
                 break;
             case "2":
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
                 this.updateGameView(this.world.getWumpusRoom());
                 this.gameView.setVisible(true);
                 break;
             case "3":
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
                 this.gameView.setVisible(true);
                 break;
             case "4":
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
-                this.updateGameView(this.world.getWumpusRoom());
+                this.updateGameView(this.world.getRandomRoom());
                 this.gameView.setVisible(true);
                 break;
             case "5":
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
-                this.updateGameView(this.world.getRandomRoom());
+                layout = new Layout();
+                world = new World(layout);
+                updateGameView(this.world.getLocation().getLabel());
                 this.gameView.setVisible(true);
                 break;
             default:
                 this.monsterView.setVisible(false);
-                this.world.setFlyingBird();
                 this.updateGameView(this.world.getWumpusRoom());
                 this.gameView.setVisible(true);
                 break;
