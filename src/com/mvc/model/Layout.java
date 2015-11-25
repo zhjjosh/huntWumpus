@@ -50,7 +50,7 @@ public class Layout {
             { "3",	"2",    "1"	},                
             { "3",	"4",    "1"	},   
             { "4",	"14",   "1"	},
-            { "4",	"13",   "1"	},
+            { "4",	"3",   "1"	},
             { "4",	"5",    "1"	},      
             { "5",	"15",   "1"     }, 
             { "5",	"4",    "1"	}, 
@@ -131,7 +131,7 @@ public class Layout {
     }
         
     public Room getPlayerLocation() {
-        
+        playerLabel = generateRandom();
         while (playerLabel.equals(wumpusLabel) || playerLabel.equals(flyingBirdLabel) || playerLabel.equals(monsterlabel)){
             playerLabel = generateRandom();
         }
@@ -153,6 +153,7 @@ public class Layout {
     }
     
     public Room getMonsterLocation() {
+        monsterlabel = generateRandom();
 	while (monsterlabel.equals(wumpusLabel)){
             monsterlabel = generateRandom();
         }

@@ -55,7 +55,7 @@ public class PauseView extends JFrame{
         titleLabel1 = new JLabel();
         titleLabel1.setFont(new Font("Arial", 1, 18));
         titleLabel1.setForeground(Color.WHITE);
-        titleLabel1.setText("Your game has been pasue.");
+        titleLabel1.setText("Your game has been paused.");
         getContentPane().add(titleLabel1);
         titleLabel1.setBounds(200, 20, 350, 150);
         

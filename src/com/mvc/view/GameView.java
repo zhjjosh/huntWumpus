@@ -28,9 +28,9 @@ import javax.swing.SwingConstants;
 public class GameView extends JFrame {
 
     private JLabel imgLabel;
-    private ImageIcon creatureImg, roomImg;
+    private ImageIcon roomImg;
     private JTextArea infoTextArea;
-    private JButton room1Button, room2Button, room3Button;
+    private JButton room1Button, room2Button, room3Button,  shoot1Button, shoot2Button, shoot3Button;
     private JMenuBar menubar;
     private JMenu menu;
     private JMenuItem exitMenuItem, pauseMenuItem;
@@ -61,19 +61,20 @@ public class GameView extends JFrame {
         getContentPane().setLayout(null);
         setContentPane(new JLabel(new ImageIcon(getClass().getResource(GameImage.BACKGROUND_IMAGE))));
 
-        imgLabel = new JLabel();
-        creatureImg = new ImageIcon(getClass().getResource(GameImage.FLYING_BIRD));
-        imgLabel.setIcon(creatureImg);
-        getContentPane().add(imgLabel);
-        imgLabel.setBounds(100, 20, 160, 120);
-
         infoTextArea = new JTextArea();
         infoTextArea.setFont(new Font("Arial", 1, 18));
         infoTextArea.setText("You are in room 1. \nThere no creature in the room.");
         getContentPane().add(infoTextArea);
-        infoTextArea.setBounds(300, 20, 350, 120);
+        infoTextArea.setBounds(100, 20, 550, 120);
         infoTextArea.setEditable(false);
 
+        shoot1Button = new JButton();
+        shoot1Button.setFont(new Font("Arial", 1, 12));
+        shoot1Button.setText("Shoot Room 1");
+        getContentPane().add(shoot1Button);
+        shoot1Button.setBounds(100, 150, 160, 50);
+        shoot1Button.setHorizontalTextPosition(SwingConstants.CENTER);
+        
         room1Button = new JButton();
         room1Button.setFont(new Font("Arial", 1, 18));
         roomImg = new ImageIcon(getClass().getResource(GameImage.DOOR));
@@ -84,6 +85,13 @@ public class GameView extends JFrame {
         room1Button.setBounds(100, 200, 160, 200);
         room1Button.setHorizontalTextPosition(SwingConstants.CENTER);
 
+        shoot2Button = new JButton();
+        shoot2Button.setFont(new Font("Arial", 1, 12));
+        shoot2Button.setText("Shoot Room 2");
+        getContentPane().add(shoot2Button);
+        shoot2Button.setBounds(295, 150, 160, 50);
+        shoot2Button.setHorizontalTextPosition(SwingConstants.CENTER);
+        
         room2Button = new JButton();
         room2Button.setFont(new Font("Arial", 1, 18));
         room2Button.setIcon(roomImg);
@@ -93,6 +101,13 @@ public class GameView extends JFrame {
         room2Button.setBounds(295, 200, 160, 200);
         room2Button.setHorizontalTextPosition(SwingConstants.CENTER);
 
+        shoot3Button = new JButton();
+        shoot3Button.setFont(new Font("Arial", 1, 12));
+        shoot3Button.setText("Shoot Room 2");
+        getContentPane().add(shoot3Button);
+        shoot3Button.setBounds(490, 150, 160, 50);
+        shoot3Button.setHorizontalTextPosition(SwingConstants.CENTER);
+        
         room3Button = new JButton();
         room3Button.setFont(new Font("Arial", 1, 18));
         room3Button.setIcon(roomImg);
@@ -117,20 +132,6 @@ public class GameView extends JFrame {
      */
     public void setImgLabel(JLabel imgLabel) {
         this.imgLabel = imgLabel;
-    }
-
-    /**
-     * @return the creatureImg
-     */
-    public ImageIcon getCreatureImg() {
-        return creatureImg;
-    }
-
-    /**
-     * @param creatureImg the creatureImg to set
-     */
-    public void setCreatureImg(ImageIcon creatureImg) {
-        this.creatureImg = creatureImg;
     }
 
     /**
@@ -257,5 +258,47 @@ public class GameView extends JFrame {
      */
     public void setPauseMenuItem(JMenuItem pauseMenuItem) {
         this.pauseMenuItem = pauseMenuItem;
+    }
+
+    /**
+     * @return the shoot1Button
+     */
+    public JButton getShoot1Button() {
+        return shoot1Button;
+    }
+
+    /**
+     * @param shoot1Button the shoot1Button to set
+     */
+    public void setShoot1Button(JButton shoot1Button) {
+        this.shoot1Button = shoot1Button;
+    }
+
+    /**
+     * @return the shoot2Button
+     */
+    public JButton getShoot2Button() {
+        return shoot2Button;
+    }
+
+    /**
+     * @param shoot2Button the shoot2Button to set
+     */
+    public void setShoot2Button(JButton shoot2Button) {
+        this.shoot2Button = shoot2Button;
+    }
+
+    /**
+     * @return the shoot3Button
+     */
+    public JButton getShoot3Button() {
+        return shoot3Button;
+    }
+
+    /**
+     * @param shoot3Button the shoot3Button to set
+     */
+    public void setShoot3Button(JButton shoot3Button) {
+        this.shoot3Button = shoot3Button;
     }
 }

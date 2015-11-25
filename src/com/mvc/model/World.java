@@ -25,19 +25,19 @@ public class World extends Graph {
     
     public String MonsterCheck(boolean check) {
         if (check){
-            monsterStatus++;
+            setMonsterStatus(getMonsterStatus() + 1);
         }
-        if (location.equals(flyingBird)){
+        if (getLocation().equals(getFlyingBird())){
             return "1";
-        }else if (location.equals(monster)){
-            if (monsterStatus%3 == 1){
+        }else if (getLocation().equals(getMonster())){
+            if (getMonsterStatus()%3 == 1){
                 return "2";
-            }else if (monsterStatus%3 == 2){
+            }else if (getMonsterStatus()%3 == 2){
                 return "3";
             }else{
                  return "4";
             }
-        }else if (location.equals(wumpus)){
+        }else if (getLocation().equals(getWumpus())){
             return "5";
         }else {
             return "0";
@@ -46,7 +46,7 @@ public class World extends Graph {
     }
     
     public String getFlyingBirdText(String s) {
-        return "There is a flying bird in this room " + s + ".\nYou are told that the wumpus is "+ distance( location, wumpus )+" rooms away";
+        return "There is a flying bird in this room " + s + ".\nYou are told that the wumpus is "+ distance(getLocation(), getWumpus())+" rooms away";
     }
     
     public String getSleepMonsterText(String s) {
@@ -65,12 +65,16 @@ public class World extends Graph {
         return "Wumpus is in this room " + s + ", You are killed..\nPlease click continue to try again \nor click exit to leave the game";
     }
     
-    public String getVictoryText(String s) {
+    public String getVictoryText() {
         return "Wumpus has been killed. You have won the game.\nPlease click continue to try again \nor click exit to leave the game";
     }
     
+    public String getShootFailedText() {
+        return "Wrong room. Wumpus came to your room and killed you.\nPlease click continue to try again \nor click exit to leave the game";
+    }
+    
     public void setFlyingBird(){
-        flyingBird = layout.getFlyingBirdLocation();
+        setFlyingBird(getLayout().getFlyingBirdLocation());
     }
     
     public Room getRoom( String r) {
@@ -116,7 +120,7 @@ public class World extends Graph {
     }
      
      public String getRandomRoom() {
-        return layout.generateRandom();
+        return getLayout().generateRandom();
     }
 
     public boolean shoot( Room r ) {
@@ -205,6 +209,20 @@ public class World extends Graph {
      */
     public void setMonster(Room monster) {
         this.monster = monster;
+    }
+
+    /**
+     * @return the monsterStatus
+     */
+    public int getMonsterStatus() {
+        return monsterStatus;
+    }
+
+    /**
+     * @param monsterStatus the monsterStatus to set
+     */
+    public void setMonsterStatus(int monsterStatus) {
+        this.monsterStatus = monsterStatus;
     }
     
 }
