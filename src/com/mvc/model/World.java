@@ -99,7 +99,31 @@ public class World extends Graph {
 
     public String describe() {
 	String s = getLocation().describe();
-	s += "\nThere are no creature in this room";
+	ArrayList <Edge>  wumpusEdge = getWumpus().edges;
+        ArrayList <Edge>  monsterEdge = getMonster().edges;
+        boolean creatureCheck = false;
+        int i = 0;
+        while (i<3){
+            if (wumpusEdge.get(i).to.equals(location.getLabel())){
+                s += "\nI smell a wumpus";
+                creatureCheck = true;
+            }
+            i++;
+        }
+        
+        i = 0;
+        while (i<3){
+            if (monsterEdge.get(i).to.equals(location.getLabel())){
+                s += "\nMonster nearby";
+                 creatureCheck = true;
+            }
+            i++;
+        }
+        
+        if (!creatureCheck){
+            s += "\nThere are no creature in this room";
+        }
+        
 	return s;
     }
     
