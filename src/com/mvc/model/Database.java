@@ -35,9 +35,7 @@ public class Database {
             }
             String dbURL2 = "jdbc:derby://localhost:1527/HuntWumpus;create=true";
             Connection conn = DriverManager.getConnection(dbURL2, user, password);
-            if (conn != null) {
-                System.out.println("Connected to database #2");
-            }
+
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("select * from nodes ");
             int i = 0;
@@ -63,9 +61,7 @@ public class Database {
             }
             String dbURL2 = "jdbc:derby://localhost:1527/HuntWumpus;create=true";
             Connection conn = DriverManager.getConnection(dbURL2, user, password);
-            if (conn != null) {
-                System.out.println("Connected to database #2");
-            }
+
             Statement stmt = conn.createStatement();
             ResultSet rset = stmt.executeQuery("select * from edges ");
             int i = 0;
